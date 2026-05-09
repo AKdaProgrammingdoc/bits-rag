@@ -1,34 +1,43 @@
-// Vercel serverless entry — bridges Node.js req/res to the Fetch API
-// then delegates to TanStack Start's built SSR handler in dist/server/server.js
+// Vercel serverless entry point.
+// Bridges Node.js IncomingMessage/ServerResponse to the Fetch API,
+// then delegates to the fully-bundled SSR handler (api/ssr.mjs).
 
-import { createServer } from "../dist/server/server.js";
+let serverPromise;
+
+async function getServer() {
+  if (!serverPromise) {
+    // Dynamic import so module is loaded once and cached
+    serverPromise = import('./ssr.mjs').then((m) => m.default ?? m);
+  }
+  return serverPromise;
+}
 
 /**
- * Convert a Node.js IncomingMessage into a Web Fetch API Request.
+ * Convert Node.js IncomingMessage → Web Fetch Request
  */
-async function toRequest(req) {
-  const host = req.headers["x-forwarded-host"] || req.headers.host || "localhost";
-  const proto = req.headers["x-forwarded-proto"] || "https";
+async function toFetchRequest(req) {
+  const host =
+    req.headers['x-forwarded-host'] ||
+    req.headers['host'] ||
+    'localhost';
+  const proto = req.headers['x-forwarded-proto'] || 'https';
   const url = `${proto}://${host}${req.url}`;
 
-  const method = req.method || "GET";
   const headers = new Headers();
-  for (const [key, value] of Object.entries(req.headers)) {
-    if (value !== undefined) {
-      if (Array.isArray(value)) {
-        for (const v of value) headers.append(key, v);
-      } else {
-        headers.set(key, value);
-      }
-    }
+  for (const [key, val] of Object.entries(req.headers)) {
+    if (val == null) continue;
+    if (Array.isArray(val)) val.forEach((v) => headers.append(key, v));
+    else headers.set(key, val);
   }
 
-  const hasBody = !["GET", "HEAD"].includes(method);
+  const method = (req.method || 'GET').toUpperCase();
+  const hasBody = !['GET', 'HEAD'].includes(method);
+
   const body = hasBody
     ? await new Promise((resolve) => {
         const chunks = [];
-        req.on("data", (chunk) => chunks.push(chunk));
-        req.on("end", () => resolve(Buffer.concat(chunks)));
+        req.on('data', (c) => chunks.push(c));
+        req.on('end', () => resolve(Buffer.concat(chunks)));
       })
     : undefined;
 
@@ -36,42 +45,36 @@ async function toRequest(req) {
 }
 
 /**
- * Write a Web Fetch API Response back to Node.js ServerResponse.
+ * Write Web Fetch Response → Node.js ServerResponse
  */
-async function sendResponse(webResponse, res) {
-  res.statusCode = webResponse.status;
-  for (const [key, value] of webResponse.headers.entries()) {
-    res.setHeader(key, value);
-  }
-  if (webResponse.body) {
-    const buf = await webResponse.arrayBuffer();
-    res.end(Buffer.from(buf));
+async function sendFetchResponse(fetchResponse, res) {
+  res.statusCode = fetchResponse.status;
+  fetchResponse.headers.forEach((val, key) => res.setHeader(key, val));
+
+  if (fetchResponse.body) {
+    const reader = fetchResponse.body.getReader();
+    const pump = async () => {
+      const { done, value } = await reader.read();
+      if (done) { res.end(); return; }
+      res.write(Buffer.from(value));
+      await pump();
+    };
+    await pump();
   } else {
     res.end();
   }
 }
 
-let serverPromise;
-
-async function getServer() {
-  if (!serverPromise) {
-    serverPromise = import("../dist/server/server.js").then(
-      (m) => m.default ?? m
-    );
-  }
-  return serverPromise;
-}
-
 export default async function handler(req, res) {
   try {
     const server = await getServer();
-    const request = await toRequest(req);
+    const request = await toFetchRequest(req);
     const response = await server.fetch(request);
-    await sendResponse(response, res);
+    await sendFetchResponse(response, res);
   } catch (err) {
-    console.error(err);
+    console.error('[api/server] fatal:', err);
     res.statusCode = 500;
-    res.setHeader("content-type", "text/plain");
-    res.end("Internal Server Error");
+    res.setHeader('content-type', 'text/plain');
+    res.end('Internal Server Error');
   }
 }

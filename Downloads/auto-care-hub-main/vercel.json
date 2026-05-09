@@ -3,11 +3,13 @@
   "buildCommand": "npm run build",
   "framework": null,
   "outputDirectory": "dist/client",
+  "functions": {
+    "api/server.js": {
+      "runtime": "nodejs20.x",
+      "includeFiles": "api/ssr.mjs"
+    }
+  },
   "rewrites": [
-    {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/api/server"
