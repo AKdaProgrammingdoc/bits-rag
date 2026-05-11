@@ -276,10 +276,14 @@ function Home() {
                     </Reveal>
                   ))}
                 </div>
-                <div className="mt-10 -mx-6 md:-mx-10">
-                  <img src={carWashFlyer} alt="SK Motors Car Wash — Starting at ₹350" className="w-full rounded-none md:rounded-2xl object-contain" />
-                </div>
               </div>
+            </div>
+          </Reveal>
+
+          {/* CAR WASH FLYER */}
+          <Reveal>
+            <div className="w-full my-6">
+              <img src={carWashFlyer} alt="SK Motors Car Wash — Starting at ₹350" className="w-full rounded-3xl object-contain" />
             </div>
           </Reveal>
 
@@ -305,10 +309,14 @@ function Home() {
                     </Reveal>
                   ))}
                 </div>
-                <div className="mt-10 -mx-6 md:-mx-10">
-                  <img src={bikeServicesFlyer} alt="SK Motors Multi Brand Bike Service Centre" className="w-full rounded-none md:rounded-2xl object-contain" />
-                </div>
               </div>
+            </div>
+          </Reveal>
+
+          {/* BIKE SERVICES FLYER */}
+          <Reveal>
+            <div className="w-full my-6">
+              <img src={bikeServicesFlyer} alt="SK Motors Multi Brand Bike Service Centre" className="w-full rounded-3xl object-contain" />
             </div>
           </Reveal>
         </div>
