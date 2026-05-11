@@ -59,7 +59,7 @@ export function Navbar() {
             <Languages size={14} /> {lang === "en" ? "தமிழ்" : "EN"}
           </button>
           <a
-            href="https://wa.me/917947121433"
+            href="https://wa.me/919843777729"
             target="_blank"
             rel="noopener"
             className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-sm hover:shadow-glow-sm transition-all hover:scale-[1.03]"
@@ -93,7 +93,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/917947121433"
+            href="https://wa.me/919843777729"
             className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-primary text-primary-foreground font-semibold"
           >
             <MessageCircle size={18} /> {t("whatsapp_us")}

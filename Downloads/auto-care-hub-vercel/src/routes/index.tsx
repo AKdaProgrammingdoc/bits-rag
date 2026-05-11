@@ -104,7 +104,7 @@ function Home() {
                   {t("book_service")} <ArrowRight size={18} />
                 </a>
                 <a
-                  href="https://wa.me/917947121433"
+                  href="https://wa.me/919843777729"
                   target="_blank" rel="noopener"
                   className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border-2 border-primary text-primary font-bold uppercase tracking-wide hover:bg-primary hover:text-primary-foreground transition-all"
                 >
@@ -233,7 +233,7 @@ function Home() {
 
           <Reveal delay={800}>
             <a
-              href="https://wa.me/917947121433"
+              href="https://wa.me/919843777729"
               target="_blank" rel="noopener"
               className="sheen-on-hover mt-10 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-display font-bold uppercase tracking-wide shadow-glow hover:scale-[1.03] active:translate-y-0.5 transition-all"
             >
@@ -349,7 +349,7 @@ function Home() {
                   <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/15 border border-primary/40 text-primary text-sm font-bold uppercase tracking-wider"><Star size={14} fill="currentColor" /> First Pre-Book Only</span>
                 </div>
                 <a
-                  href="https://wa.me/917947121433?text=Hi%2C%20I%27d%20like%20to%20pre-book%20the%20free%20spare%20bike%20offer."
+                  href="https://wa.me/919843777729?text=Hi%2C%20I%27d%20like%20to%20pre-book%20the%20free%20spare%20bike%20offer."
                   target="_blank" rel="noopener"
                   className="sheen-on-hover mt-7 inline-flex items-center gap-2 px-7 py-4 rounded-full bg-primary text-primary-foreground font-display font-bold uppercase tracking-wide shadow-glow hover:scale-[1.03] active:translate-y-0.5 transition-all"
                 >
@@ -577,7 +577,7 @@ function Home() {
               <div className="space-y-4 h-full flex flex-col justify-center">
                 <Info icon={MapPin} label={t("addr_label")} value={t("addr_value")} />
                 <Info icon={Clock} label={t("hours_label")} value={t("hours_value")} />
-                <Info icon={Phone} label={t("phone_label")} value="+91 79471 21433" href="tel:+917947121433" />
+                <Info icon={Phone} label={t("phone_label")} value="+91 98437 77729" href="tel:+919843777729" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=SK+Motors+Service+Centre+Vandiyur+Madurai"
                   target="_blank" rel="noopener"
@@ -616,13 +616,13 @@ function Home() {
           <Reveal delay={150}>
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
               <a
-                href="tel:+917947121433"
+                href="tel:+919843777729"
                 className="sheen-on-hover inline-flex items-center justify-center gap-2 px-6 py-5 rounded-2xl bg-primary text-primary-foreground font-display font-bold uppercase tracking-wide text-lg hover:shadow-glow active:translate-y-0.5 transition-all"
               >
-                <Phone size={20} /> {t("call_btn")} +91 79471 21433
+                <Phone size={20} /> {t("call_btn")} +91 98437 77729
               </a>
               <a
-                href="https://wa.me/917947121433"
+                href="https://wa.me/919843777729"
                 target="_blank" rel="noopener"
                 className="inline-flex items-center justify-center gap-2 px-6 py-5 rounded-2xl bg-whatsapp text-white font-display font-bold uppercase tracking-wide text-lg hover:scale-[1.02] transition-all"
               >
@@ -651,8 +651,8 @@ function Home() {
                 </h2>
                 <p className="mt-3 text-muted-foreground">{t("scan_qr_desc")}</p>
                 <div className="mt-5 flex flex-wrap justify-center md:justify-start gap-3">
-                  <a href="tel:+917947121433" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wide hover:shadow-glow transition-all">
-                    <Phone size={16} /> +91 79471 21433
+                  <a href="tel:+919843777729" className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-wide hover:shadow-glow transition-all">
+                    <Phone size={16} /> +91 98437 77729
                   </a>
                 </div>
               </div>
@@ -707,7 +707,7 @@ function Home() {
             <div className="font-display font-bold uppercase text-sm tracking-widest mb-3">{t("contact_label")}</div>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>{t("addr_value")}</li>
-              <li><a href="tel:+917947121433" className="hover:text-primary">+91 79471 21433</a></li>
+              <li><a href="tel:+919843777729" className="hover:text-primary">+91 98437 77729</a></li>
               <li>{t("hours_value")}</li>
             </ul>
           </div>
@@ -730,7 +730,7 @@ function ServiceCard({ icon: Icon, name, desc }: { icon: any; name: string; desc
       <h3 className="font-display font-bold text-xl uppercase tracking-wide">{name}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
       <a
-        href={`https://wa.me/917947121433?text=${encodeURIComponent(`Hi, I'd like a quote for ${name}.`)}`}
+        href={`https://wa.me/919843777729?text=${encodeURIComponent(`Hi, I'd like a quote for ${name}.`)}`}
         target="_blank" rel="noopener"
         className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:gap-3 transition-all"
       >
