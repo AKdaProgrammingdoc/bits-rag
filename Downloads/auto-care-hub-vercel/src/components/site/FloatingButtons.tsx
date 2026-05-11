@@ -11,7 +11,7 @@ export function FloatingButtons() {
         <Phone size={24} />
       </a>
       <a
-        href="https://wa.me/918122818169"
+        href="https://wa.me/917947121433"
         target="_blank"
         rel="noopener"
         aria-label="WhatsApp us"
