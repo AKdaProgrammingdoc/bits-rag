@@ -73,7 +73,7 @@ function Home() {
           style={{ background: "var(--gradient-radial-glow)" }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 flex flex-col gap-12 items-stretch">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center">
           <div>
             <Reveal>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/40 bg-primary/10 text-xs sm:text-sm font-semibold text-primary tracking-wider uppercase">
@@ -133,7 +133,7 @@ function Home() {
           </div>
 
           <Reveal delay={200}>
-            <div className="mt-4 overflow-hidden"><HoloBike /></div>
+            <HoloBike />
           </Reveal>
         </div>
       </section>
